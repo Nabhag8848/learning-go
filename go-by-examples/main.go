@@ -6,5 +6,6 @@ func main() {
 	// ArrayDS()
 	// Maps()
 	// Functions()
-	Pointers()
+	// Pointers()
+	Struct()
 }
