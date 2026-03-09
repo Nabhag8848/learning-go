@@ -7,7 +7,7 @@ import (
 
 const VALUE string = "constant"
 
-func main() {
+func Basics() {
 	fmt.Println(1.0 / 3.0)
 	fmt.Println((math.Pow(3, 2)))
 
@@ -38,4 +38,5 @@ func main() {
 
 	const x int = 10
 	// x = 23 not allowed
+
 }
