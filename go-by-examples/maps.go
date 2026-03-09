@@ -36,6 +36,11 @@ func Maps() {
 	n2 := map[string]int{"foo": 1, "bar": 2}
 
 	checkEquality(n ,n2)
+
+	for k, v := range n2 {
+		fmt.Printf("%s -> %d", k, v)
+		fmt.Println()
+	}
 }
 
 

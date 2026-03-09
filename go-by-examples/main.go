@@ -4,5 +4,6 @@ func main() {
 	// Basics()
 	// ControlConstruct()
 	// ArrayDS()
-	Maps()
+	// Maps()
+	// Functions()
 }
