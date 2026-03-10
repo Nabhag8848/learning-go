@@ -11,5 +11,6 @@ func main() {
 	// Methods()
 	// Interface()
 	// Enums()
-	Embeddings()
+	// Embeddings()
+	Generics()
 }
