@@ -18,5 +18,8 @@ func Timeouts() {
 		fmt.Print(msg)
 	case <-time.After(2 * time.Second): 
 		fmt.Println("timeout 2")
+	// default:
+	// 	fmt.Println("default value") // make select non blocking
 	}
+	
 }

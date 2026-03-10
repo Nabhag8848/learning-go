@@ -83,10 +83,56 @@ func channelValueSelect() {
 	}
 }
 
+func channelClosed() {
+	jobs := make(chan int)
+	done := make(chan bool)
+
+
+	go func() {	
+		for {
+			j, more := <-jobs
+			if more {
+				fmt.Println("received job", j)
+			} else {
+				fmt.Println("received all jobs")
+                done <- true
+                return
+			}
+		}
+	
+	}()
+	
+	for j := 1; j <= 3; j++ {
+        jobs <- j
+        fmt.Println("sent job", j)
+
+    }
+	close(jobs)
+	fmt.Println("sent all jobs")
+
+	<-done
+
+	_, ok := <-jobs
+    fmt.Println("received more jobs:", ok)
+}
+
+func rangeOverChannel(){
+	queue := make(chan string, 2)
+	queue <- "one"
+	queue <- "two"
+	close(queue)
+
+	for i := range queue {
+		fmt.Println(i)
+	}
+}
+
 func Channels() {
 	sendValuesOverChannel()
 	channelBuffering()
 	channelSynchronization()
 	channelDirections()
 	channelValueSelect()
+	channelClosed()
+	rangeOverChannel()
 }

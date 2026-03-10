@@ -15,6 +15,6 @@ func main() {
 	// Generics()
 	// Errors()
 	// GoRoutines()
-	// Channels()
-	Timeouts()
+	Channels()
+	// Timeouts()
 }
