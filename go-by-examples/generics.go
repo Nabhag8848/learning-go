@@ -1,6 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"iter"
+	"slices"
+	"strings"
+)
 
 func SlicesIndex[S ~[]E, E comparable](s S, v E) int {
 	for i := range s {
@@ -39,6 +44,29 @@ func (lst *List[T]) AllElements() []T {
     return elems
 }
 
+func (lst *List[T]) All() iter.Seq[T] {
+	return func(yield func(T) bool) {
+		for e:= lst.head; e != nil; e=e.next {
+			if !yield(e.val) {
+				return
+			}
+		}
+	}
+}
+
+	
+func genFib() iter.Seq[int] {
+    return func(yield func(int) bool) {
+        a, b := 0, 1
+        for {
+            if !yield(a) {
+                return
+            }
+            a, b = b, a+b
+        }
+    }
+}
+
 func Generics() {
 	var s = []string{"foo", "bar", "zoo"}
     fmt.Println("index of zoo:", SlicesIndex(s, "zoo"))
@@ -49,4 +77,23 @@ func Generics() {
     lst.Push(23)
 
 	fmt.Println("list:", lst.AllElements())
+
+	for e := range lst.All() {
+		fmt.Print(e, ",")
+	}
+
+	all := slices.Collect(lst.All())
+    fmt.Println("all:", all)
+
+	for part := range strings.SplitSeq("go-by-example", "-") {
+        fmt.Printf("part: %s\n", part)
+    }
+
+	for n := range genFib() {
+		
+		if n >= 10 {
+			break
+		}
+		fmt.Println(n)
+	}
 }
