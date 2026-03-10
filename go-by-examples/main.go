@@ -10,5 +10,6 @@ func main() {
 	// Struct()
 	// Methods()
 	// Interface()
-	Enums()
+	// Enums()
+	Embeddings()
 }
