@@ -41,8 +41,27 @@ func channelSynchronization() {
 	<-channel
 }
 
+func pings(pings chan<- string){
+	pings <- "ping"
+}
+
+func pongs(pings <-chan string, pongs chan<- string){
+	msg := <- pings
+	fmt.Println(msg)
+	pongs <- "pong"
+}
+func channelDirections() {
+	ping := make(chan string , 1)
+	pong := make(chan string , 1)
+
+	pings(ping)
+	pongs(ping, pong)
+	fmt.Println(<-pong)
+}
+
 func Channels() {
 	sendValuesOverChannel()
 	channelBuffering()
 	channelSynchronization()
+	channelDirections()
 }
