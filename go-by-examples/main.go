@@ -7,5 +7,8 @@ func main() {
 	// Maps()
 	// Functions()
 	// Pointers()
-	Struct()
+	// Struct()
+	// Methods()
+	// Interface()
+	Enums()
 }
