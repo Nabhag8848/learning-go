@@ -13,5 +13,6 @@ func main() {
 	// Enums()
 	// Embeddings()
 	// Generics()
-	Errors()
+	// Errors()
+	GoRoutines()
 }
