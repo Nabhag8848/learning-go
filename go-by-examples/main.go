@@ -14,5 +14,6 @@ func main() {
 	// Embeddings()
 	// Generics()
 	// Errors()
-	GoRoutines()
+	// GoRoutines()
+	Channels()
 }
