@@ -24,6 +24,23 @@ func api(val int) error {
 	return fmt.Errorf("not found: %w", NotFoundError)
 }
 
+type argError struct {
+    arg     int
+    message string
+}
+
+func (e *argError) Error() string {
+    return fmt.Sprintf("%d - %s", e.arg, e.message)
+}
+
+func f1(arg int) (int, error) {
+    if arg == 42 {
+
+        return -1, &argError{arg, "can't work with it"}
+    }
+    return arg + 3, nil
+}
+
 func Errors() {
 
 	fmt.Println(f(1))
@@ -35,4 +52,15 @@ func Errors() {
 	}
 	fmt.Println(api(404))
 
+	_, err1 := f1(42)
+    if ae, ok := errors.AsType[*argError](err1); ok {
+        fmt.Println(ae.arg)
+        fmt.Println(ae.message)
+    } else {
+        fmt.Println("err doesn't match argError")
+    }
 }
+
+
+
+    
