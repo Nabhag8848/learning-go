@@ -15,9 +15,10 @@ func main() {
 	// Generics()
 	// Errors()
 	// GoRoutines()
-	// Channels()
+	Channels()
 	// Timeouts()
 	// Timers()
 	// Tickers()
-	WorkerPool()
+	// WorkerPool()
+
 }

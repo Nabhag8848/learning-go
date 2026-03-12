@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sync"
 	"time"
 )
 
@@ -127,6 +128,24 @@ func rangeOverChannel(){
 	}
 }
 
+func workerr(i int){
+	fmt.Println("worker sleep - ", i)
+	time.Sleep(1 * time.Second)
+	fmt.Println("worker executed and return - ", i)
+}
+
+func WaitGroup() {
+	var wg sync.WaitGroup
+
+	for i:= range 5 {
+		wg.Go(func() {
+			workerr(i)
+		})
+	}
+
+	wg.Wait()
+}
+
 func Channels() {
 	sendValuesOverChannel()
 	channelBuffering()
@@ -135,4 +154,5 @@ func Channels() {
 	channelValueSelect()
 	channelClosed()
 	rangeOverChannel()
+	WaitGroup()
 }
