@@ -18,5 +18,6 @@ func main() {
 	// Channels()
 	// Timeouts()
 	// Timers()
-	Tickers()
+	// Tickers()
+	WorkerPool()
 }
